@@ -1,0 +1,201 @@
+{
+  "navItems": [
+    {
+      "id": "company",
+      "label": "회사소개",
+      "path": "/about",
+      "megaMenu": {
+        "columns": [
+          {
+            "id": "company-intro",
+            "title": "아티올덱스 소개",
+            "links": [
+              { "label": "비전 & 미션", "to": "/about/vision-mission" },
+              { "label": "CEO 인사말", "to": "/about/ceo-message" },
+              { "label": "회사 연혁", "to": "/about/history" },
+              { "label": "핵심 가치", "to": "/about/core-values" },
+              { "label": "인증 & 브로슈어", "to": "/about/certifications" }
+            ]
+          },
+          {
+            "id": "company-team",
+            "title": "팀 소개",
+            "links": [
+              { "label": "조직도", "to": "/about/organization" },
+              { "label": "핵심 멤버 프로필", "to": "/about/teams" },
+              { "label": "채용 정보", "to": "/about/careers" },
+              { "label": "기업문화 & 일하는 방식", "to": "/about/culture" }
+            ]
+          },
+          {
+            "id": "company-partnerships",
+            "title": "파트너십",
+            "links": [
+              { "label": "Microsoft Partner 인증", "to": "/about/partnerships" },
+              { "label": "기술 파트너", "to": "/about/partnerships" },
+              { "label": "고객사 & 레퍼런스", "to": "/about/partnerships" }
+            ]
+          },
+          {
+            "id": "company-location",
+            "title": "오시는 길",
+            "links": [
+              { "label": "오시는 길", "to": "/location" }
+            ]
+          }
+        ]
+      },
+      "mobileMenu": {
+        "sections": [
+          {
+            "links": [
+              { "label": "회사 개요", "to": "/about" },
+              { "label": "비전 & 미션", "to": "/about/vision-mission" },
+              { "label": "CEO 인사말", "to": "/about/ceo-message" },
+              { "label": "회사 연혁", "to": "/about/history" },
+              { "label": "핵심 가치", "to": "/about/core-values" },
+              { "label": "조직도", "to": "/about/organization" },
+              { "label": "핵심 멤버", "to": "/about/teams" },
+              { "label": "채용 정보", "to": "/about/careers" },
+              { "label": "파트너십", "to": "/about/partnerships" },
+              { "label": "오시는 길", "to": "/location" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "solutions",
+      "label": "솔루션",
+      "path": "/solutions",
+      "megaMenu": {
+        "columns": [
+          {
+            "id": "solutions-core",
+            "title": "핵심 솔루션",
+            "links": [
+              { "label": "Artiflow — AI Workflow OS", "to": "/solutions/artiflow" },
+              { "label": "SmartHub — Data Integration", "to": "/solutions/smarthub" },
+              { "label": "ConnectStack — Local Operations", "to": "/solutions/connectstack" }
+            ]
+          },
+          {
+            "id": "solutions-ai-automation",
+            "title": "AI & 자동화",
+            "links": [
+              { "label": "AI & Automation Solutions", "to": "/solutions/ai-automation" },
+              { "label": "RPA + AI 통합", "to": "/solutions/ai-automation/rpa-integration" },
+              { "label": "문서 자동화", "to": "/solutions/ai-automation/document-automation" },
+              { "label": "AI Agent 운영", "to": "/solutions/ai-automation/ai-agent" },
+              { "label": "AI 도입 컨설팅", "to": "/solutions/ai-automation/ai-consulting" }
+            ]
+          },
+          {
+            "id": "solutions-data",
+            "title": "데이터 통합",
+            "links": [
+              { "label": "데이터 통합 서비스", "to": "/solutions/data-integration" },
+              { "label": "API 통합 서비스", "to": "/solutions/data-integration/api-integration" },
+              { "label": "데이터 마이그레이션", "to": "/solutions/data-integration/data-migration" },
+              { "label": "시스템 연동 개발", "to": "/solutions/data-integration/system-integration" },
+              { "label": "엔터프라이즈 연계 구조 개선", "to": "/solutions/data-integration/enterprise-integration" }
+            ]
+          },
+          {
+            "id": "solutions-power-custom",
+            "title": "Power Platform & 맞춤 개발",
+            "groups": [
+              {
+                "title": "Power Platform",
+                "links": [
+                  { "label": "Power Platform Solutions", "to": "/solutions/power-platform" },
+                  { "label": "Power Apps 구축", "to": "/solutions/power-apps" },
+                  { "label": "Power Automate 워크플로우", "to": "/solutions/power-automate" },
+                  { "label": "Power BI 대시보드", "to": "/solutions/power-bi" }
+                ]
+              },
+              {
+                "title": "Custom Development",
+                "links": [
+                  { "label": "엔터프라이즈 솔루션 개발", "to": "/solutions/enterprise-development" },
+                  { "label": "웹 앱 개발", "to": "/solutions/web-app-development" }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "mobileMenu": {
+        "sections": [
+          {
+            "links": [
+              { "label": "솔루션 개요", "to": "/solutions" },
+              { "label": "Artiflow", "to": "/solutions/artiflow" },
+              { "label": "SmartHub", "to": "/solutions/smarthub" },
+              { "label": "ConnectStack", "to": "/solutions/connectstack" },
+              { "label": "AI & 자동화", "to": "/solutions/ai-automation" },
+              { "label": "데이터 통합", "to": "/solutions/data-integration" },
+              { "label": "Power Platform", "to": "/solutions/power-platform" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "portfolio",
+      "label": "포트폴리오",
+      "path": "/portfolio",
+      "mobileMenu": {
+        "sections": [
+          {
+            "links": [
+              { "label": "포트폴리오 전체", "to": "/portfolio" },
+              { "label": "AI 프로젝트", "to": "/portfolio/ai" },
+              { "label": "DX 전환 사례", "to": "/portfolio/dx" },
+              { "label": "데이터 통합", "to": "/portfolio/data" },
+              { "label": "산업별 솔루션", "to": "/portfolio/industry" },
+              { "label": "제품 기반 구축", "to": "/portfolio/product" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "resources",
+      "label": "리소스",
+      "path": "/resources",
+      "mobileMenu": {
+        "sections": [
+          {
+            "links": [
+              { "label": "리소스 센터", "to": "/resources" },
+              { "label": "기술 블로그", "to": "/resources/blog" },
+              { "label": "백서 & 가이드", "to": "/resources/whitepapers" },
+              { "label": "웨비나 & 이벤트", "to": "/resources/webinars" },
+              { "label": "도구 & 템플릿", "to": "/resources/tools" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "contact",
+      "label": "문의하기",
+      "path": "/contact",
+      "mobileMenu": {
+        "sections": [
+          {
+            "links": [
+              { "label": "일반 문의", "to": "/contact" },
+              { "label": "AI 프로젝트 견적", "to": "/contact/projects/ai-estimate" },
+              { "label": "DX 컨설팅", "to": "/contact/projects/dx-consulting" },
+              { "label": "Power Platform", "to": "/contact/projects/power-platform" },
+              { "label": "기술 지원", "to": "/contact/support/maintenance" },
+              { "label": "파트너십", "to": "/contact/partners/proposal" }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

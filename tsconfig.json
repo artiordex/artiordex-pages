@@ -1,0 +1,41 @@
+/**
+ * Description : tsconfig.json - 📌 ConnectWon Frontend (React + Vite)
+ * Author : Shiwoo Min
+ * Date : 2025-11-16
+ */
+
+{
+  "compilerOptions": {
+    /* 기본 컴파일 환경 */
+    "target": "ES2020",
+    "module": "NodeNext",
+    "moduleResolution": "nodenext",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+
+    /* JSX (React 자동 런타임) */
+    "jsx": "react-jsx",
+
+    /* 타입 검사 */
+    "strict": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+
+    /* import 호환성 */
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+
+    /* 경로 alias */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["apps/src/*"]
+    },
+
+    /* Vite가 번들링하므로 TS는 emit 불필요 */
+    "noEmit": true
+  },
+
+  /* 프로젝트 파일 */
+  "include": ["apps/**/*"],
+  "exclude": ["node_modules", "dist"]
+}

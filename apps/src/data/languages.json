@@ -1,0 +1,42 @@
+[
+  {
+    "code": "KOR",
+    "name": "한국어"
+  },
+  {
+    "code": "ENG",
+    "name": "English"
+  },
+  {
+    "code": "JPN",
+    "name": "日本語"
+  },
+  {
+    "code": "CHN",
+    "name": "中文"
+  },
+  {
+    "code": "ESP",
+    "name": "Español"
+  },
+  {
+    "code": "FRA",
+    "name": "Français"
+  },
+  {
+    "code": "DEU",
+    "name": "Deutsch"
+  },
+  {
+    "code": "ITA",
+    "name": "Italiano"
+  },
+  {
+    "code": "RUS",
+    "name": "Русский"
+  },
+  {
+    "code": "ARA",
+    "name": "العربية"
+  }
+]

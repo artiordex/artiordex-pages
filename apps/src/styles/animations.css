@@ -1,0 +1,167 @@
+/**
+ * Description : animations.css - 📌 ConnectWon UI 애니메이션 라이브러리
+ * Author : Shiwoo Min
+ * Date : 2025-11-16
+ */
+
+/* Pulse Loader */
+.pulse-loader {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--pulse-color, currentColor);
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: pulse 1.2s ease-in-out infinite;
+  animation-delay: var(--pulse-delay, 0s);
+}
+
+@keyframes pulse {
+  0%, 80%, 100% { transform: scale(0.5); opacity: 0.4; }
+  40% { transform: scale(1); opacity: 1; }
+}
+
+
+/* Skeleton Loader */
+.skeleton-loader {
+  background: linear-gradient(90deg, #f3f3f3 25%, #e0e0e0 50%, #f3f3f3 75%);
+  background-size: 200% 100%;
+  animation: skeleton 1.6s infinite;
+  width: var(--sk-width, 100%);
+  height: var(--sk-height, 16px);
+  border-radius: 4px;
+}
+
+@keyframes skeleton {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+
+/* Floating Notification */
+.floating-notification {
+  padding: 12px 16px;
+  border-radius: 8px;
+  color: #fff;
+  animation:
+    floatIn 0.4s ease-out,
+    floatOut 0.4s ease-in var(--close-delay, 2.5s) forwards;
+}
+
+.floating-notification--success { background: #2ecc71; }
+.floating-notification--error   { background: #e74c3c; }
+.floating-notification--info    { background: #3498db; }
+.floating-notification--warning { background: #f39c12; color: #111; }
+
+@keyframes floatIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floatOut {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-20px); }
+}
+
+
+/* Fade Variants */
+.fade-in-up    { animation: fadeUp 0.6s ease-out; }
+.fade-in-down  { animation: fadeDown 0.6s ease-out; }
+.fade-in-left  { animation: fadeLeft 0.6s ease-out; }
+.fade-in-right { animation: fadeRight 0.6s ease-out; }
+
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeDown {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeLeft {
+  0% { opacity: 0; transform: translateX(-20px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeRight {
+  0% { opacity: 0; transform: translateX(20px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+
+/* List Animation */
+.list-item-animate {
+  opacity: 0;
+  animation: listSlide 0.45s ease-out forwards;
+}
+
+@keyframes listSlide {
+  from { opacity: 0; transform: translateX(-20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+
+/* Progress Bar */
+.progress-wrapper {
+  width: 100%;
+  height: var(--pb-height, 8px);
+  background: var(--pb-bg, #e5e7eb);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  width: var(--pb-width, 0%);
+  background: var(--pb-color, #3b82f6);
+  transition: width 0.3s ease;
+}
+
+
+/* Circular Progress */
+.circular-progress {
+  transform: rotate(-90deg);
+}
+
+.circular-progress circle {
+  fill: none;
+  stroke-width: var(--cp-stroke, 4px);
+  transition: stroke-dashoffset 0.3s ease;
+}
+
+.circular-progress .track {
+  stroke: var(--cp-track, #e5e7eb);
+}
+
+.circular-progress .progress {
+  stroke: var(--cp-color, #3b82f6);
+}
+
+
+/* Typing Indicator */
+.typing-indicator {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.typing-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--td-color, #aaa);
+  animation: typing 1.3s infinite ease-in-out;
+  animation-delay: var(--td-delay, 0s);
+}
+
+@keyframes typing {
+  0%, 70%, 100% { transform: translateY(0); opacity: 0.4; }
+  40% { transform: translateY(-8px); opacity: 1; }
+}

@@ -1,0 +1,60 @@
+{
+  "name": "github_pages",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ConnectWon - 예약 기반 생활 서비스 (Frontend)",
+  "author": "Shiwoo Min",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.11.0",
+    "pnpm": ">=10.7.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "format": "prettier --write \"**/*.{ts,tsx,js,json,mdx}\"",
+    "lint": "eslint . --ext ts,tsx"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^10.0.0",
+    "@tanstack/react-query": "^5.51.0",
+    "class-variance-authority": "^0.7.1",
+    "date-fns": "^4.1.0",
+    "dotenv": "^16.4.5",
+    "firebase": "^12.3.0",
+    "framer-motion": "^12.23.15",
+    "react": "18.3.1",
+    "react-color": "^2.19.3",
+    "react-datepicker": "^8.7.0",
+    "react-dom": "18.3.1",
+    "react-dropzone": "^14.3.8",
+    "react-hook-form": "^7.62.0",
+    "react-router-dom": "^7.9.6",
+    "zustand": "^4.4.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@trivago/prettier-plugin-sort-imports": "^6.0.0",
+    "@types/react": "^19.2.5",
+    "@types/react-dom": "^19.2.3",
+    "@types/react-router-dom": "^5.3.3",
+    "@typescript-eslint/eslint-plugin": "^8.42.0",
+    "@typescript-eslint/parser": "^8.42.0",
+    "@vitejs/plugin-react": "^5.0.2",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^9.9.0",
+    "eslint-import-resolver-node": "^0.3.9",
+    "eslint-import-resolver-typescript": "^4.4.4",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "postcss": "^8.5.6",
+    "prettier": "^3.5.3",
+    "prettier-plugin-tailwindcss": "^0.2.8",
+    "tailwindcss": "3.4.14",
+    "typescript": "5.6.3",
+    "vite": "^7.1.4",
+    "vite-tsconfig-paths": "^5.1.4"
+  }
+}

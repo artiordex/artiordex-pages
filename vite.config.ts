@@ -14,6 +14,9 @@ export default defineConfig({
   // 공용 정적 파일 위치
   publicDir: 'apps/public',
 
+  // 배포용 기본 경로
+  base: '/artiordex-pages/apps/',
+
   // 개발 서버
   server: {
     port: 5173,
@@ -33,7 +36,4 @@ export default defineConfig({
       '@': path.resolve(__dirname, './apps/src'),
     },
   },
-
-  // 배포용 기본 경로
-  base: '/apps/'
 });

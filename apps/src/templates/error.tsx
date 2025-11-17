@@ -5,7 +5,7 @@
  */
 
 import { useEffect } from 'react';
-import { ErrorPage } from '../components/ErrorPage';
+import { ErrorPage } from '@/components/ErrorPage';
 
 type ErrorType = '404' | '403' | '405' | '500' | '400';
 

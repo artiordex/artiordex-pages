@@ -4,14 +4,23 @@
  * Date : 2025-09-16
  */
 
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter } from "react-router-dom";
 
-// 라우팅 설정
-import { AppRoutes } from '@/router/index';
+/* 공통 레이아웃 */
+import AppShell from "@/layouts/AppShell";
+
+/* SPA 라우팅 */
+import { AppRoutes } from "@/router/index";
 
 const App = () => {
   return (
-    
+    <BrowserRouter>
+      {/* 최상위 공통 레이아웃 */}
+      <AppShell>
+        {/* 페이지 라우터 */}
+        <AppRoutes />
+      </AppShell>
+    </BrowserRouter>
   );
 };
 

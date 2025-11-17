@@ -1,10 +1,10 @@
 /**
  * Description : Form.tsx - 📌 폼 컨테이너 컴포넌트
  * Author : Shiwoo Min
- * Date : 2025-09-09
+ * Date : 2025-11-17
  */
 import { forwardRef } from 'react';
-import { type FormProps } from '../ui-types.js';
+import { type FormProps } from '@/types/components.types';
 
 // 폼 컴포넌트 정의
 export const Form = forwardRef<HTMLFormElement, FormProps>(

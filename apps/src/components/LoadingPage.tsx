@@ -1,9 +1,9 @@
 /**
  * Description : LoadingSpinner.tsx - 📌 재사용 가능한 스피너
  * Author : Shiwoo Min
- * Date : 2025-09-11
+ * Date : 2025-11-17
  */
-import { type LoadingPageProps } from '../ui-types.js';
+import { type LoadingPageProps } from '@/types/components.types';
 import { LoadingSpinner } from './LoadingSpinner.js';
 
 // 로딩 페이지 컴포넌트

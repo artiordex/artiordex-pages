@@ -1,10 +1,10 @@
 /**
  * Description : Field.tsx - 📌 폼 필드 래퍼 컴포넌트
  * Author : Shiwoo Min
- * Date : 2025-09-09
+ * Date : 2025-11-17
  */
 import { forwardRef } from 'react';
-import { type FieldProps } from '../ui-types.js';
+import { type FieldProps } from '@/types/components.types';
 
 // 폼 필드 래퍼 컴포넌트 정의
 export const Field = forwardRef<HTMLDivElement, FieldProps>(

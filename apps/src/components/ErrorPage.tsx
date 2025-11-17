@@ -1,9 +1,9 @@
 /**
  * Description : ErrorPage.tsx - 📌 범용 에러 페이지
  * Author : Shiwoo Min
- * Date : 2025-09-09
+ * Date : 2025-11-17
  */
-import { type ErrorPageProps } from '../ui-types.js';
+import { type ErrorPageProps } from '@/types/components.types';
 
 // 범용 에러 페이지 컴포넌트
 export function ErrorPage({

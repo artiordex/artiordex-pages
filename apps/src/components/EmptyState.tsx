@@ -1,9 +1,9 @@
 /**
  * Description : EmptyState.tsx - 📌 빈 상태 페이지
  * Author : Shiwoo Min
- * Date : 2025-09-09
+ * Date : 2025-11-17
  */
-import { type EmptyStateProps } from '../ui-types.js';
+import { type EmptyStateProps } from '@/types/components.types';
 
 // 빈 상태 페이지 컴포넌트
 export function EmptyState({

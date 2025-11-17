@@ -1,10 +1,10 @@
 /**
  * Description : RadioGroup.tsx - 📌 라디오 버튼 그룹 컴포넌트
  * Author : Shiwoo Min
- * Date : 2025-09-09
+ * Date : 2025-11-17
  */
 import { forwardRef, useState } from 'react';
-import { type RadioGroupProps } from '../ui-types.js';
+import { type RadioGroupProps } from '@/types/components.types';
 import { cva } from 'class-variance-authority';
 
 // 라디오 버튼 variant 스타일 정의

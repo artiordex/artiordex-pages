@@ -234,3 +234,53 @@ export interface ToolbarProps extends HTMLAttributes<HTMLDivElement> {
   rightContent?: ReactNode;
   centerContent?: ReactNode;
 }
+
+/**
+ * Loading
+ */
+export interface LoadingPageProps {
+  title?: string;
+  description?: string;
+  size?: 'small' | 'medium' | 'large';
+  className?: string;
+}
+
+/**
+ * LoadingSpinner
+ */
+export interface LoadingSpinnerProps {
+  size?: 'small' | 'medium' | 'large' | number;
+  color?: 'blue' | 'gray' | 'white' | string;
+  className?: string;
+}
+
+/**
+ * EmptyState
+ * - 데이터 없음 / 오류 상태 / 초기 상태 등 시각적 안내용 UI
+ */
+export interface EmptyStateAction {
+  label: string;
+  onClick: () => void;
+}
+
+export interface EmptyStateProps {
+  icon?: React.ReactNode;
+  title?: string;
+  description?: string | React.ReactNode;
+  action?: EmptyStateAction;
+  className?: string;
+  centered?: boolean;
+  maxWidthClass?: string;
+}
+
+/**
+ * 에러 페이지 Props
+ */
+export interface ErrorPageProps {
+  type?: '404' | '403' | '405' | '400' | '500';
+  title?: string;
+  description?: string;
+  onRetry?: () => void;
+  onHome?: () => void;
+  className?: string;
+}

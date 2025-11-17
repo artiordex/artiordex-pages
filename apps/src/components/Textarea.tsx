@@ -1,10 +1,10 @@
 /**
  * Description : Textarea.tsx - 📌 텍스트 영역 컴포넌트
  * Author : Shiwoo Min
- * Date : 2025-09-09
+ * Date : 2025-11-17
  */
 import { forwardRef } from 'react';
-import { type TextareaProps } from '../ui-types.js';
+import { type TextareaProps } from '@/types/components.types';
 import { cva } from 'class-variance-authority';
 
 // 텍스트 영역 variant 스타일 정의

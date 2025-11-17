@@ -1,5 +1,11 @@
+/**
+ * Description : home/page.tsx - 📌 아티올덱스 메인 홈페이지
+ * Author : Shiwoo Min
+ * Date : 2025-11-17
+ */
 
-import Header from '../../components/feature/Header';
+import AppShell from "@/layouts/AppShell";
+import Header from '../../../../components/feature/Header';
 import Footer from '../../components/feature/Footer';
 import ChatBot from '../../components/feature/ChatBot';
 import QuickBar from '../../components/feature/QuickBar';
@@ -11,8 +17,9 @@ import TechStackSection from './components/TechStackSection';
 
 const HomePage = () => {
   return (
-    <div className="min-h-screen">
+    <AppShell variant="default">
       <Header />
+
       <main>
         <HeroSection />
         <AboutSection />
@@ -20,14 +27,12 @@ const HomePage = () => {
         <PortfolioSection />
         <TechStackSection />
       </main>
+
       <Footer />
-      
-      {/* AI Chatbot - Bottom Right */}
+
       <ChatBot />
-      
-      {/* Quick Actions Bar - Bottom Left */}
       <QuickBar />
-    </div>
+    </AppShell>
   );
 };
 

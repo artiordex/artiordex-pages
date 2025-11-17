@@ -1,19 +1,19 @@
 /**
  * Description : Header.tsx - 📌 헤더 컴포넌트
  * Author : Shiwoo Min
- * Date : 2025-11-16
+ * Date : 2025-11-17
  */
 
-import React, { useState, useRef, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { 
-  headerConfig, 
-  type TopNavItem, 
+import {
+  headerConfig,
   type MenuColumn,
   type MenuGroup,
   type MenuLink,
-  type MobileMenuSection 
+  type MobileMenuSection,
+  type TopNavItem
 } from '@/configs/header.config';
+import React, { useEffect, useRef, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 const Header: React.FC = () => {
   const location = useLocation();
@@ -83,8 +83,8 @@ const Header: React.FC = () => {
     const handleClickOutside = (event: MouseEvent) => {
       // Close language dropdown
       if (
-        showLanguageDropdown && 
-        languageDropdownRef.current && 
+        showLanguageDropdown &&
+        languageDropdownRef.current &&
         !languageDropdownRef.current.contains(event.target as Node)
       ) {
         setShowLanguageDropdown(false);
@@ -92,7 +92,7 @@ const Header: React.FC = () => {
 
       // Close mobile menu
       if (
-        isMobileMenuOpen && 
+        isMobileMenuOpen &&
         !(event.target as Element).closest('.mobile-menu-container')
       ) {
         closeMobileMenu();
@@ -100,7 +100,7 @@ const Header: React.FC = () => {
     };
 
     document.addEventListener('mousedown', handleClickOutside);
-    
+
     // Control body scroll when mobile menu is open
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -115,7 +115,7 @@ const Header: React.FC = () => {
   }, [isMobileMenuOpen, showLanguageDropdown]);
 
   // Get selected language label
-  const selectedLanguageLabel = 
+  const selectedLanguageLabel =
     headerConfig.languages.find(lang => lang.code === selectedLanguage)?.name || selectedLanguage;
 
   // Render menu links
@@ -179,9 +179,7 @@ const Header: React.FC = () => {
     if (!item.megaMenu) return null;
 
     const columnCount = item.megaMenu.columns.length;
-    const gridCols = columnCount <= 3 ? 'md:grid-cols-3' : 
-                     columnCount === 4 ? 'md:grid-cols-4' : 
-                     'md:grid-cols-5';
+    const gridCols = columnCount <= 3 ? 'md:grid-cols-3' : columnCount === 4 ? 'md:grid-cols-4' : 'md:grid-cols-5';
 
     return (
       <div
@@ -228,7 +226,7 @@ const Header: React.FC = () => {
             {/* Logo */}
             <div className="flex-shrink-0">
               <Link to="/" className="flex items-center">
-                <h1 
+                <h1
                   className="text-2xl font-bold text-blue-600"
                   style={{ fontFamily: '"Pacifico", serif' }}
                 >
@@ -249,8 +247,8 @@ const Header: React.FC = () => {
                   <Link
                     to={item.path}
                     className={`font-medium text-sm px-3 py-2 transition-colors flex items-center space-x-1 ${
-                      isActive(item.path) 
-                        ? 'text-blue-600' 
+                      isActive(item.path)
+                        ? 'text-blue-600'
                         : 'text-gray-700 hover:text-blue-600'
                     }`}
                   >
@@ -327,7 +325,7 @@ const Header: React.FC = () => {
                 </div>
               </button>
             </div>
-      
+
           </div>
         </div>
       </header>
@@ -336,7 +334,7 @@ const Header: React.FC = () => {
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-50 lg:hidden mobile-menu-container">
           {/* Background overlay */}
-          <div 
+          <div
             className="fixed inset-0 bg-black bg-opacity-50 transition-opacity"
             onClick={closeMobileMenu}
             aria-hidden="true"
@@ -347,7 +345,7 @@ const Header: React.FC = () => {
             <div className="flex flex-col h-full">
               {/* Mobile menu header */}
               <div className="flex items-center justify-between p-6 border-b border-gray-200">
-                <h2 
+                <h2
                   className="text-xl font-bold text-blue-600"
                   style={{ fontFamily: '"Pacifico", serif' }}
                 >
@@ -374,16 +372,16 @@ const Header: React.FC = () => {
                             className="flex items-center justify-between w-full text-left font-medium text-gray-900 py-2"
                           >
                             <span>{item.label}</span>
-                            <i 
+                            <i
                               className={`ri-arrow-${
                                 activeMobileSubmenu === item.id ? 'up' : 'down'
                               }-s-line text-sm`}
                             />
                           </button>
-                          
+
                           {activeMobileSubmenu === item.id && (
                             <div className="mt-2 ml-4 space-y-2">
-                              {item.mobileMenu.sections.map((section, idx) => 
+                              {item.mobileMenu.sections.map((section, idx) =>
                                 renderMobileMenuSection(section, idx)
                               )}
                             </div>
@@ -411,7 +409,7 @@ const Header: React.FC = () => {
                         <i className="ri-global-line text-base mr-2" />
                         언어 선택 ({selectedLanguageLabel})
                       </span>
-                      <i 
+                      <i
                         className={`ri-arrow-${
                           activeMobileSubmenu === 'language' ? 'up' : 'down'
                         }-s-line text-sm`}

@@ -1,9 +1,9 @@
 /**
  * Description : Footer.tsx - 📌 ConnectWon UI 푸터 React 컴포넌트
  * Author : Shiwoo Min
- * Date : 2025-10-07
+ * Date : 2025-11-17
  */
-import type { FooterProps } from '../ui-types.js';
+import type { FooterProps } from '@/types/layout.types';
 
 interface InternalLinkProps {
   href: string;

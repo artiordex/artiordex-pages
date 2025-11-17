@@ -4,7 +4,7 @@
  * Date : 2025-09-19
  */
 import { useEffect, useState } from 'react';
-import type { QuickMenuItem, QuickMenuProps } from '../ui-types.js';
+import type { QuickMenuItem, QuickMenuProps } from '@/types/layout.types';
 
 const defaultMenuItems: QuickMenuItem[] = [
   {

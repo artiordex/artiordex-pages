@@ -1,10 +1,10 @@
 /**
  * Description : Input.tsx - 📌 입력 필드 컴포넌트
  * Author : Shiwoo Min
- * Date : 2025-09-09
+ * Date : 2025-11-17
  */
 import { forwardRef } from 'react';
-import { type InputProps } from '../ui-types.js';
+import { type InputProps } from '@/types/components.types';
 import { cva } from 'class-variance-authority';
 
 // 입력 필드 variant 스타일 정의

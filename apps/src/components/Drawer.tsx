@@ -1,11 +1,11 @@
 /**
  * Description : Drawer.tsx - 📌 사이드 드로어 컴포넌트
  * Author : Shiwoo Min
- * Date : 2025-09-09
+ * Date : 2025-11-17
  */
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import type { DrawerProps } from '../ui-types.js';
+import type { DrawerProps } from '@/types/components.types';
 import { cva } from 'class-variance-authority';
 
 // 드로어 variant 스타일 정의

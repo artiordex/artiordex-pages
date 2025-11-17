@@ -1,7 +1,7 @@
 /**
  * Description : Card.tsx - 📌 카드 레이아웃 컴포넌트
  * Author : Shiwoo Min
- * Date : 2025-09-09
+ * Date : 2025-11-17
  */
 import { forwardRef, type HTMLAttributes } from 'react';
 

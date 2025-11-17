@@ -1,14 +1,13 @@
 
 /**
- * Description : - 📌 버튼 컴포넌트
+ * Description : - 📌 i18next 초기화 - Google 번역 API 사용
  * Author : Shiwoo Min
- * Date : 2025-11-16
+ * Date : 2025-11-17
  */
 
 import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
-import messages from './local/index';
+import { initReactI18next } from 'react-i18next';
 
 i18n
   .use(LanguageDetector)
@@ -17,7 +16,11 @@ i18n
     lng: 'en',
     fallbackLng: 'en',
     debug: false,
-    resources: messages,
+    resources: {
+      en: { translation: {} },
+      ko: { translation: {} },
+      jp: { translation: {} },
+    },
     interpolation: {
       escapeValue: false,
     },

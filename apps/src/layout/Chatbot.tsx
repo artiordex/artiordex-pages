@@ -1,7 +1,7 @@
 /**
- * Description : Chatbot.tsx - 📌 ConnectWon UI 애플리케이션 챗봇 컴포넌트
+ * Description : Chatbot.tsx - 📌 애플리케이션 챗봇 컴포넌트
  * Author : Shiwoo Min
- * Date : 2025-09-25
+ * Date : 2025-11-17
  */
 import { useState } from 'react';
 

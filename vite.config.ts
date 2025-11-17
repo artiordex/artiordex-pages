@@ -4,9 +4,8 @@
  * Date : 2025-11-17
  */
 
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
 import path from 'path';
+import { defineConfig } from 'vite';
 
 export default defineConfig({
   // 프로젝트 루트를 apps 폴더로 지정
@@ -36,5 +35,5 @@ export default defineConfig({
   },
 
   // 배포용 기본 경로
-  base: '/', // GitHub Pages용이라면 './' 로 교체
+  base: './'
 });

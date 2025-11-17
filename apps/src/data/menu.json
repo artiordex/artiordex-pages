@@ -40,7 +40,7 @@
             "id": "company-location",
             "title": "오시는 길",
             "links": [
-              { "label": "오시는 길", "to": "/location" }
+              { "label": "오시는 길", "to": "/about/find-us" }
             ]
           }
         ]
@@ -58,7 +58,7 @@
               { "label": "핵심 멤버", "to": "/about/teams" },
               { "label": "채용 정보", "to": "/about/careers" },
               { "label": "파트너십", "to": "/about/partnerships" },
-              { "label": "오시는 길", "to": "/location" }
+              { "label": "오시는 길", "to": "/about/find-us" }
             ]
           }
         ]

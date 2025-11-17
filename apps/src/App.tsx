@@ -5,23 +5,24 @@
  */
 
 // import { BrowserRouter } from "react-router-dom";
-import { HashRouter } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 
-/* 공통 레이아웃 */
-import AppShell from "@/layouts/AppShell";
+// Main Page
+import MainPage from "@/pages/main";
 
-/* SPA 라우팅 */
+/* SPA 라우팅 완성 후 풀기 */
 // import { AppRoutes } from "@/router/index";
 
 const App = () => {
   return (
     <HashRouter>
-      {/* 최상위 공통 레이아웃 */}
-      <AppShell>
+      <Routes>
         {/* 페이지 라우터 */}
         {/* <AppRoutes /> */}
-        <div style={{ padding: 40, fontSize: 32 }}>Hello World</div>
-      </AppShell>
+
+        {/* 메인 홈 페이지 */}
+        <Route path="/" element={<MainPage />} />
+      </Routes>
     </HashRouter>
   );
 };

@@ -1,0 +1,106 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "정부 금융 보고서 자동화 시스템",
+      "category": "ax-rpa",
+      "tags": ["AX/RPA 자동화", "Microsoft Power Automate", "Power BI", "Python"],
+      "description": "Microsoft Power Automate, Power BI, 맞춤형 Python 스크립트를 결합한 지능형 자동화를 통해 공공부문 금융 보고를 혁신했습니다. 이 포괄적인 솔루션은 월별 금융 데이터 수집 및 보고서 생성 시간을 90% 단축하고, 여러 정부 부처에서 투명성을 높이고 데이터 기반 의사결정을 가능하게 하는 실시간 대시보드를 구현했습니다.",
+      "shortDescription": "공공부문 금융 보고 자동화로 90% 시간 단축 달성",
+      "techStack": [
+        "Microsoft Power Automate",
+        "Power BI",
+        "Python 스크립트 연동",
+        "Azure Functions",
+        "SQL Server",
+        "SharePoint"
+      ],
+      "results": [
+        "90% 시간 단축 (주 40시간 → 4시간)",
+        "일일 10,000+ 데이터 포인트 자동 처리",
+        "실시간 규정 준수 대시보드 구축",
+        "데이터 투명성 및 정확도 98% 달성",
+        "연간 1,600시간 업무 시간 절약",
+        "오류율 95% 감소"
+      ],
+      "image": "https://...",
+      "client": "공공기관",
+      "industry": "공공행정",
+      "duration": "3개월",
+      "teamSize": "4명",
+      "impact": "주 40시간 → 4시간으로 업무 시간 단축",
+      "challenge": {
+        "title": "복잡한 수동 금융 보고 프로세스",
+        "description": "정부 기관은 여러 부서에서 수집된 금융 데이터를 수동으로 통합하고 월별 보고서를 작성하는 데 막대한 시간과 인력을 투입하고 있었습니다.",
+        "painPoints": [
+          "주당 40시간의 수동 데이터 수집 및 처리",
+          "여러 시스템 간 데이터 불일치 문제",
+          "수동 프로세스로 인한 높은 오류율",
+          "실시간 의사결정을 위한 데이터 접근성 부족",
+          "규정 준수 보고서 작성의 복잡성"
+        ]
+      },
+      "solution": {
+        "title": "지능형 자동화 및 실시간 대시보드 구축",
+        "description": "Microsoft Power Automate를 중심으로 한 자동화 워크플로우와 Power BI 기반 실시간 대시보드를 구축하여 전체 금융 보고 프로세스를 혁신했습니다.",
+        "approach": [
+          "Power Automate를 통한 데이터 수집 자동화",
+          "Python 스크립트를 활용한 고급 데이터 처리",
+          "Power BI 실시간 대시보드 구현",
+          "Azure Functions를 통한 확장 가능한 아키텍처",
+          "SharePoint 기반 문서 관리 시스템 통합"
+        ],
+        "architecture": "https://..."
+      },
+      "implementation": {
+        "timeline": [
+          {
+            "phase": "1단계: 요구사항 분석 및 설계",
+            "duration": "2주",
+            "description": "현재 프로세스 분석 및 자동화 설계",
+            "milestones": [
+              "현재 워크플로우 매핑 완료",
+              "데이터 소스 식별 및 분석",
+              "자동화 아키텍처 설계",
+              "기술 스택 확정"
+            ]
+          }
+        ],
+        "challenges": [
+          "레거시 시스템과의 복잡한 데이터 통합",
+          "정부 보안 정책 준수",
+          "대용량 데이터 실시간 처리"
+        ],
+        "solutions": [
+          "단계적 마이그레이션 전략 수립",
+          "보안 인증 및 암호화 적용",
+          "Azure 클라우드 기반 확장 가능한 아키텍처 구현"
+        ]
+      },
+      "metrics": {
+        "beforeAfter": [
+          {
+            "metric": "월별 보고서 작성 시간",
+            "before": "40시간",
+            "after": "4시간",
+            "improvement": "90% 감소"
+          }
+        ],
+        "roi": {
+          "investment": "₩50,000,000",
+          "savings": "₩200,000,000/년",
+          "paybackPeriod": "3개월"
+        }
+      },
+      "testimonial": {
+        "quote": "Artiordex의 자동화 솔루션으로 우리 부서의 업무 효율성이 혁신적으로 개선되었습니다.",
+        "author": "김정수",
+        "position": "재정관리팀장",
+        "company": "공공기관",
+        "avatar": "https://..."
+      },
+      "gallery": ["https://...", "https://..."],
+      "relatedProjects": [2, 5, 8]
+    }
+  ]
+}

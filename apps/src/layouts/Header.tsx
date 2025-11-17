@@ -1,5 +1,5 @@
 /**
- * Description : Header.tsx - 📌 헤더 컴포넌트
+ * Description : Header.tsx - 📌 헤더 컴포넌트 (MegaMenuLayout 적용)
  * Author : Shiwoo Min
  * Date : 2025-11-17
  */
@@ -12,8 +12,12 @@ import {
   type MobileMenuSection,
   type TopNavItem
 } from '@/configs/header.config';
+
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+
+// 메가메뉴 레이아웃 적용
+import MegaMenuLayout from '@/layouts/MegaMenu';
 
 const Header: React.FC = () => {
   const location = useLocation();
@@ -22,39 +26,34 @@ const Header: React.FC = () => {
   const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeMobileSubmenu, setActiveMobileSubmenu] = useState<string | null>(null);
+
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const languageDropdownRef = useRef<HTMLDivElement>(null);
 
-  // Check if current path is active
+  // 현재 페이지와 메뉴 path 비교
   const isActive = (path: string): boolean => {
-    if (path === '/') {
-      return location.pathname === '/';
-    }
+    if (path === '/') return location.pathname === '/';
     return location.pathname.startsWith(path);
   };
 
-  // Handle desktop menu hover
+  // 데스크톱 메뉴 hover 시작
   const handleMouseEnter = (menuId: string) => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-      timeoutRef.current = null;
-    }
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
     setActiveMenu(menuId);
   };
 
+  // hover 종료 → 딜레이 후 닫힘
   const handleMouseLeave = () => {
-    timeoutRef.current = setTimeout(() => {
-      setActiveMenu(null);
-    }, 150);
+    timeoutRef.current = setTimeout(() => setActiveMenu(null), 150);
   };
 
-  // Handle language selection
-  const handleLanguageSelect = (languageCode: string) => {
-    setSelectedLanguage(languageCode);
+  // 언어 변경
+  const handleLanguageSelect = (code: string) => {
+    setSelectedLanguage(code);
     setShowLanguageDropdown(false);
   };
 
-  // Mobile menu handlers
+  // 모바일 메뉴 열기/닫기
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
     setActiveMobileSubmenu(null);
@@ -69,19 +68,14 @@ const Header: React.FC = () => {
     setActiveMobileSubmenu(null);
   };
 
-  // Cleanup timeout on unmount
+  // 언마운트 시 timeout 제거
   useEffect(() => {
-    return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
-    };
+    return () => timeoutRef.current && clearTimeout(timeoutRef.current);
   }, []);
 
-  // Close mobile menu when clicking outside
+  // 외부 클릭 시 언어 / 모바일 메뉴 닫기
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      // Close language dropdown
       if (
         showLanguageDropdown &&
         languageDropdownRef.current &&
@@ -90,7 +84,6 @@ const Header: React.FC = () => {
         setShowLanguageDropdown(false);
       }
 
-      // Close mobile menu
       if (
         isMobileMenuOpen &&
         !(event.target as Element).closest('.mobile-menu-container')
@@ -100,13 +93,7 @@ const Header: React.FC = () => {
     };
 
     document.addEventListener('mousedown', handleClickOutside);
-
-    // Control body scroll when mobile menu is open
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
+    document.body.style.overflow = isMobileMenuOpen ? 'hidden' : 'unset';
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
@@ -114,14 +101,14 @@ const Header: React.FC = () => {
     };
   }, [isMobileMenuOpen, showLanguageDropdown]);
 
-  // Get selected language label
   const selectedLanguageLabel =
-    headerConfig.languages.find(lang => lang.code === selectedLanguage)?.name || selectedLanguage;
+    headerConfig.languages.find(lang => lang.code === selectedLanguage)?.name ||
+    selectedLanguage;
 
-  // Render menu links
+  // 메가메뉴 내부의 링크 렌더링
   const renderMenuLinks = (links: MenuLink[]) => (
     <ul className="space-y-2">
-      {links.map((link) => (
+      {links.map(link => (
         <li key={link.to}>
           {link.external ? (
             <a
@@ -147,7 +134,7 @@ const Header: React.FC = () => {
     </ul>
   );
 
-  // Render menu column
+  // 메가메뉴 컬럼 렌더링
   const renderMenuColumn = (column: MenuColumn) => (
     <div key={column.id} className="space-y-3">
       <div className="border-b border-gray-100 pb-2">
@@ -156,7 +143,6 @@ const Header: React.FC = () => {
         </h3>
       </div>
 
-      {/* Render groups if exists */}
       {column.groups ? (
         column.groups.map((group: MenuGroup, index: number) => (
           <div key={group.title || `group-${index}`} className="space-y-2">
@@ -174,29 +160,23 @@ const Header: React.FC = () => {
     </div>
   );
 
-  // Render mega menu
+  // ⚡ 기존 renderMegaMenu 유지 + 내부 구조는 MegaMenuLayout으로 대체
   const renderMegaMenu = (item: TopNavItem) => {
     if (!item.megaMenu) return null;
 
-    const columnCount = item.megaMenu.columns.length;
-    const gridCols = columnCount <= 3 ? 'md:grid-cols-3' : columnCount === 4 ? 'md:grid-cols-4' : 'md:grid-cols-5';
-
     return (
       <div
-        className="absolute left-0 right-0 top-full bg-white shadow-lg border-b border-gray-100 z-40"
+        className="absolute left-0 right-0 top-full z-40"
         onMouseEnter={() => handleMouseEnter(item.id)}
         onMouseLeave={handleMouseLeave}
       >
-        <div className="max-w-7xl mx-auto px-6 py-4 md:py-6">
-          <div className={`grid grid-cols-1 ${gridCols} gap-8 md:gap-12`}>
-            {item.megaMenu.columns.map(renderMenuColumn)}
-          </div>
-        </div>
+        {/* 📌 여기서 MegaMenuLayout 렌더링 */}
+        <MegaMenuLayout menu={item.megaMenu} />
       </div>
     );
   };
 
-  // Render mobile menu section
+  // 모바일 서브 메뉴 렌더링
   const renderMobileMenuSection = (section: MobileMenuSection, index: number) => (
     <div key={index} className="space-y-1">
       {section.title && (
@@ -204,7 +184,7 @@ const Header: React.FC = () => {
           {section.title}
         </p>
       )}
-      {section.links.map((link) => (
+      {section.links.map(link => (
         <Link
           key={link.to}
           to={link.to}
@@ -219,25 +199,26 @@ const Header: React.FC = () => {
 
   return (
     <>
-      {/* Main Header */}
+      {/* =======================
+          📌 데스크톱 헤더
+      ======================== */}
       <header className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex justify-between items-center h-16">
-            {/* Logo */}
-            <div className="flex-shrink-0">
-              <Link to="/" className="flex items-center">
-                <h1
-                  className="text-2xl font-bold text-blue-600"
-                  style={{ fontFamily: '"Pacifico", serif' }}
-                >
-                  Artiordex
-                </h1>
-              </Link>
-            </div>
 
-            {/* Desktop Navigation */}
+            {/* 로고 */}
+            <Link to="/" className="flex-shrink-0">
+              <h1
+                className="text-2xl font-bold text-blue-600"
+                style={{ fontFamily: '"Pacifico", serif' }}
+              >
+                Artiordex
+              </h1>
+            </Link>
+
+            {/* 데스크톱 메뉴 */}
             <nav className="hidden lg:flex items-center space-x-5">
-              {headerConfig.navItems.map((item) => (
+              {headerConfig.navItems.map(item => (
                 <div
                   key={item.id}
                   className="relative"
@@ -258,42 +239,36 @@ const Header: React.FC = () => {
                     )}
                   </Link>
 
-                  {/* Render mega menu if active */}
+                  {/* 📌 MegaMenuLayout 적용 */}
                   {activeMenu === item.id && renderMegaMenu(item)}
                 </div>
               ))}
 
-              {/* Language Selector */}
+              {/* 언어 선택 */}
               <div className="relative" ref={languageDropdownRef}>
-                <div className="relative" ref={languageDropdownRef}>
                 <button
                   onClick={() => setShowLanguageDropdown(!showLanguageDropdown)}
                   className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors flex items-center space-x-1"
-                  aria-label="언어 선택"
-                  aria-expanded={showLanguageDropdown ? "true" : "false"}
-                  aria-haspopup="listbox"
                 >
                   <i className="ri-global-line text-base mr-1" />
                   <span>{selectedLanguageLabel}</span>
                   <i className={`ri-arrow-${showLanguageDropdown ? 'up' : 'down'}-s-line text-sm`} />
                 </button>
-              </div>
 
-                {/* Language Dropdown */}
                 {showLanguageDropdown && (
                   <div className="absolute right-0 top-full mt-1 w-40 bg-white border border-gray-200 rounded-md shadow-lg z-50">
                     <div className="py-1 max-h-64 overflow-y-auto">
-                      {headerConfig.languages.map((language) => (
+                      {headerConfig.languages.map(lang => (
                         <button
-                          key={language.code}
-                          onClick={() => handleLanguageSelect(language.code)}
+                          key={lang.code}
+                          onClick={() => handleLanguageSelect(lang.code)}
                           className={`block w-full text-left px-4 py-2 text-sm transition-colors ${
-                            selectedLanguage === language.code
+                            selectedLanguage === lang.code
                               ? 'bg-blue-50 text-blue-600 font-medium'
                               : 'text-gray-700 hover:bg-gray-50 hover:text-blue-600'
                           }`}
                         >
-                          {language.name}
+                          {lang.name}
                         </button>
                       ))}
                     </div>
@@ -301,21 +276,18 @@ const Header: React.FC = () => {
                 )}
               </div>
 
-              {/* CTA Button */}
+              {/* CTA 버튼 */}
               <button className="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded hover:bg-blue-700 transition-colors whitespace-nowrap">
                 실시간 상담
               </button>
             </nav>
 
-            {/* Mobile Menu Button */}
+            {/* 모바일 메뉴 버튼 */}
             <div className="lg:hidden">
-            <button
-              onClick={toggleMobileMenu}
-              className="p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100 transition-colors"
-              aria-label={isMobileMenuOpen ? '메뉴 닫기' : '메뉴 열기'}
-              aria-expanded={showLanguageDropdown as React.AriaAttributes['aria-expanded']}
-            >
-
+              <button
+                onClick={toggleMobileMenu}
+                className="p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100 transition-colors"
+              >
                 <div className="w-6 h-6 flex items-center justify-center">
                   {isMobileMenuOpen ? (
                     <i className="ri-close-line text-xl" />
@@ -325,25 +297,24 @@ const Header: React.FC = () => {
                 </div>
               </button>
             </div>
-
           </div>
         </div>
       </header>
 
-      {/* Mobile Menu Overlay */}
+      {/* =======================
+          📌 모바일 전체 메뉴
+      ======================== */}
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-50 lg:hidden mobile-menu-container">
-          {/* Background overlay */}
           <div
-            className="fixed inset-0 bg-black bg-opacity-50 transition-opacity"
+            className="fixed inset-0 bg-black bg-opacity-50"
             onClick={closeMobileMenu}
-            aria-hidden="true"
           />
 
-          {/* Mobile menu panel */}
-          <div className="fixed inset-y-0 right-0 w-full max-w-sm bg-white shadow-xl transform transition-transform">
+          <div className="fixed inset-y-0 right-0 w-full max-w-sm bg-white shadow-xl">
             <div className="flex flex-col h-full">
-              {/* Mobile menu header */}
+
+              {/* 상단 */}
               <div className="flex items-center justify-between p-6 border-b border-gray-200">
                 <h2
                   className="text-xl font-bold text-blue-600"
@@ -354,16 +325,15 @@ const Header: React.FC = () => {
                 <button
                   onClick={closeMobileMenu}
                   className="p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100 transition-colors"
-                  aria-label="메뉴 닫기"
                 >
                   <i className="ri-close-line text-xl" />
                 </button>
               </div>
 
-              {/* Mobile menu content */}
+              {/* 메뉴 리스트 */}
               <div className="flex-1 overflow-y-auto">
                 <nav className="p-6 space-y-4">
-                  {headerConfig.navItems.map((item) => (
+                  {headerConfig.navItems.map(item => (
                     <div key={item.id}>
                       {item.mobileMenu ? (
                         <>
@@ -373,9 +343,7 @@ const Header: React.FC = () => {
                           >
                             <span>{item.label}</span>
                             <i
-                              className={`ri-arrow-${
-                                activeMobileSubmenu === item.id ? 'up' : 'down'
-                              }-s-line text-sm`}
+                              className={`ri-arrow-${activeMobileSubmenu === item.id ? 'up' : 'down'}-s-line text-sm`}
                             />
                           </button>
 
@@ -399,7 +367,7 @@ const Header: React.FC = () => {
                     </div>
                   ))}
 
-                  {/* Language selector in mobile */}
+                  {/* 모바일 언어 선택 */}
                   <div className="pt-4 border-t border-gray-200">
                     <button
                       onClick={() => toggleMobileSubmenu('language')}
@@ -410,28 +378,26 @@ const Header: React.FC = () => {
                         언어 선택 ({selectedLanguageLabel})
                       </span>
                       <i
-                        className={`ri-arrow-${
-                          activeMobileSubmenu === 'language' ? 'up' : 'down'
-                        }-s-line text-sm`}
+                        className={`ri-arrow-${activeMobileSubmenu === 'language' ? 'up' : 'down'}-s-line text-sm`}
                       />
                     </button>
 
                     {activeMobileSubmenu === 'language' && (
                       <div className="mt-2 ml-4 space-y-2">
-                        {headerConfig.languages.map((language) => (
+                        {headerConfig.languages.map(lang => (
                           <button
-                            key={language.code}
+                            key={lang.code}
                             onClick={() => {
-                              handleLanguageSelect(language.code);
+                              handleLanguageSelect(lang.code);
                               setActiveMobileSubmenu(null);
                             }}
                             className={`block w-full text-left text-sm py-1 ${
-                              selectedLanguage === language.code
+                              selectedLanguage === lang.code
                                 ? 'text-blue-600 font-medium'
                                 : 'text-gray-600'
                             }`}
                           >
-                            {language.name}
+                            {lang.name}
                           </button>
                         ))}
                       </div>
@@ -440,11 +406,11 @@ const Header: React.FC = () => {
                 </nav>
               </div>
 
-              {/* Mobile menu footer */}
+              {/* 하단 CTA */}
               <div className="p-6 border-t border-gray-200">
                 <button
                   onClick={closeMobileMenu}
-                  className="w-full px-4 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
+                  className="w-full px-4 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700"
                 >
                   실시간 상담
                 </button>
@@ -453,6 +419,7 @@ const Header: React.FC = () => {
           </div>
         </div>
       )}
+
     </>
   );
 };

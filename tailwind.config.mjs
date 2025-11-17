@@ -12,13 +12,7 @@ import lineClamp from "@tailwindcss/line-clamp";
 /** @type {import('tailwindcss').Config} */
 const config = {
   darkMode: ["class"],
-
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
-  ],
-
+  content: ["./apps/**/*.{html,js,ts,jsx,tsx}"],
   theme: {
     extend: {
       fontFamily: {

@@ -2,7 +2,7 @@
   "name": "github_pages",
   "version": "1.0.0",
   "private": true,
-  "description": "ConnectWon - 예약 기반 생활 서비스 (Frontend)",
+  "description": "Artiordex AI · DX Platform Frontend (Web Prototype)",
   "author": "Shiwoo Min",
   "license": "MIT",
   "engines": {
@@ -14,7 +14,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "format": "prettier --write \"**/*.{ts,tsx,js,json,mdx}\"",
-    "lint": "eslint . --ext ts,tsx"
+    "lint": "eslint . --ext ts,tsx",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@faker-js/faker": "^10.0.0",
@@ -43,18 +44,29 @@
     "@typescript-eslint/parser": "^8.42.0",
     "@vitejs/plugin-react": "^5.0.2",
     "autoprefixer": "^10.4.21",
+    "commitizen": "^4.3.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "cz-customizable": "^7.5.1",
     "eslint": "^9.9.0",
     "eslint-import-resolver-node": "^0.3.9",
     "eslint-import-resolver-typescript": "^4.4.4",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^16.2.6",
     "postcss": "^8.5.6",
+    "postcss-load-config": "^6.0.1",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.2.8",
     "tailwindcss": "3.4.14",
     "typescript": "5.6.3",
     "vite": "^7.1.4",
     "vite-tsconfig-paths": "^5.1.4"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-customizable"
+    }
   }
 }

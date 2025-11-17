@@ -4,17 +4,10 @@
  * Date : 2025-11-16
  */
 
-import { forwardRef } from 'react';
 import { cva } from 'class-variance-authority';
-import type { ButtonHTMLAttributes, ReactNode } from 'react';
+import { forwardRef } from 'react';
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  children: ReactNode;
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
-  size?: 'sm' | 'md' | 'lg' | 'icon';
-  loading?: boolean;
-  className?: string;
-}
+import type { ButtonProps } from '@/types/components.types';
 
 const buttonStyles = cva(
   'inline-flex items-center justify-center font-medium rounded-xl transition-all duration-200 select-none ' +

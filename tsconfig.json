@@ -1,7 +1,7 @@
 /**
- * Description : tsconfig.json - 📌 ConnectWon Frontend (React + Vite)
+ * Description : tsconfig.json - 📌 React + Vite 환경에서 TypeScript 컴파일 옵션을 정의
  * Author : Shiwoo Min
- * Date : 2025-11-16
+ * Date : 2025-11-17
  */
 
 {

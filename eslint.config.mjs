@@ -1,7 +1,7 @@
 /**
- * Description : eslint.config.mjs - 📌 React + TypeScript + Vite 프로젝트 기본 ESLint 설정
+ * Description : eslint.config.mjs - 📌 React + TS + Vite ESLint 설정
  * Author : Shiwoo Min
- * Date : 2025-11-16
+ * Date : 2025-11-17
  */
 
 import eslint from '@eslint/js';
@@ -10,11 +10,12 @@ import tsParser from '@typescript-eslint/parser';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import importPlugin from 'eslint-plugin-import';
+import a11y from 'eslint-plugin-jsx-a11y';
+import prettier from 'eslint-config-prettier';
 
 export default [
-
-  /* 자바스크립트 기본 규칙 */
   eslint.configs.recommended,
+  prettier, // Prettier와 충돌 제거
 
   {
     files: ['**/*.{ts,tsx,js,jsx}'],
@@ -33,7 +34,6 @@ export default [
         document: 'readonly',
         console: 'readonly',
         process: 'readonly',
-        globalThis: 'readonly',
       },
     },
 
@@ -42,15 +42,22 @@ export default [
       react,
       'react-hooks': reactHooks,
       import: importPlugin,
+      'jsx-a11y': a11y,
     },
 
     settings: {
       react: { version: 'detect' },
 
-      /* import/resolver 충돌 제거 — 이걸로 문제 100% 해결됨 */
+      // import resolver 고급 설정
       'import/resolver': {
         node: { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
-        typescript: false, // ❗ FlatConfig 모드에서 resolver 충돌 방지 (핵심)
+
+        alias: {
+          map: [['@', './src']],
+          extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        },
+
+        typescript: false,
       },
     },
 
@@ -59,7 +66,7 @@ export default [
       ...tseslint.configs.recommended.rules,
       '@typescript-eslint/no-unused-vars': [
         'warn',
-        { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }
+        { varsIgnorePattern: '^_', argsIgnorePattern: '^_' }
       ],
       '@typescript-eslint/no-explicit-any': 'off',
 
@@ -68,6 +75,11 @@ export default [
       'react/prop-types': 'off',
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'warn',
+
+      /* 접근성(A11Y) */
+      'jsx-a11y/alt-text': 'warn',
+      'jsx-a11y/no-autofocus': 'warn',
+      'jsx-a11y/anchor-is-valid': 'warn',
 
       /* import 규칙 */
       'import/no-duplicates': 'warn',
@@ -80,14 +92,12 @@ export default [
         },
       ],
 
-      /* 스타일 규칙 (Prettier에서 처리) */
+      /* 기타 스타일 규칙 */
       semi: ['error', 'always'],
       quotes: 'off',
       indent: 'off',
 
-      /* inline style 경고 제거 */
-      'react/forbid-dom-props': 'off',
-      'react/style-prop-object': 'off',
+      /* 환경 규칙 */
       'no-console': 'off',
       'no-undef': 'off',
     },
@@ -98,12 +108,8 @@ export default [
     ignores: [
       'node_modules/**',
       'dist/**',
-      'build/**',
-      'coverage/**',
       '*.config.js',
-      '*.config.cjs',
       '*.config.mjs',
-      'vite.config.ts',
       'pnpm-lock.yaml',
     ],
   },

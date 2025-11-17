@@ -6,31 +6,24 @@
 
 import { useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+
 import { getBreadcrumbLabel, breadcrumbConfig } from '@/configs/breadcrumb.config';
-
-interface BreadcrumbItem {
-  label: string;
-  path: string;
-  isActive?: boolean;
-}
-
-interface BreadcrumbProps {
-  customItems?: BreadcrumbItem[];
-  className?: string;
-}
+import type { BreadcrumbProps, BreadcrumbItem } from '@/types/components.types';
 
 const Breadcrumb = ({ customItems, className = '' }: BreadcrumbProps) => {
   const location = useLocation();
 
+  /**
+   * Breadcrumb 경로 계산
+   */
   const breadcrumbItems = useMemo(() => {
-    if (customItems) {
-      return customItems;
-    }
+    if (customItems) return customItems;
 
+    // URL을 세그먼트로 분할
     const pathSegments = location.pathname.split('/').filter(Boolean);
 
     const items: BreadcrumbItem[] = [
-      { label: breadcrumbConfig.homeLabel, path: '/' }
+      { label: breadcrumbConfig.homeLabel, path: '/' } 
     ];
 
     let currentPath = '';
@@ -41,18 +34,19 @@ const Breadcrumb = ({ customItems, className = '' }: BreadcrumbProps) => {
       items.push({
         label: getBreadcrumbLabel(segment),
         path: currentPath,
-        isActive: index === pathSegments.length - 1
+        isActive: index === pathSegments.length - 1 
       });
     });
 
     return items;
   }, [location.pathname, customItems]);
 
+  // 홈("/")에서는 브레드크럼 숨김
   if (location.pathname === '/') return null;
 
   return (
     <>
-      {/* SEO Structured Data */}
+      {/* SEO 개선을 위한 JSON-LD(구조화 데이터) 삽입 */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -69,7 +63,7 @@ const Breadcrumb = ({ customItems, className = '' }: BreadcrumbProps) => {
         }}
       />
 
-      {/* Desktop */}
+      {/* 데스크톱용 Breadcrumb */}
       <nav 
         className={`hidden md:block bg-gray-50 border-b border-gray-200 ${className}`}
         aria-label="Breadcrumb"
@@ -79,10 +73,13 @@ const Breadcrumb = ({ customItems, className = '' }: BreadcrumbProps) => {
             <ol className="flex items-center space-x-2 text-sm">
               {breadcrumbItems.map((item, index) => (
                 <li key={item.path} className="flex items-center">
+                  
+                  {/* 구분 화살표 */}
                   {index > 0 && (
                     <i className="ri-arrow-right-s-line text-gray-400 mx-2"></i>
                   )}
 
+                  {/* 현재 페이지 표시 */}
                   {item.isActive ? (
                     <span className="text-gray-900 font-medium" aria-current="page">
                       {item.label}
@@ -102,7 +99,7 @@ const Breadcrumb = ({ customItems, className = '' }: BreadcrumbProps) => {
         </div>
       </nav>
 
-      {/* Mobile */}
+      {/* 모바일용 Breadcrumb */}
       <nav 
         className={`md:hidden bg-gray-50 border-b border-gray-200 ${className}`}
         aria-label="Breadcrumb"
@@ -110,6 +107,7 @@ const Breadcrumb = ({ customItems, className = '' }: BreadcrumbProps) => {
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center py-3">
             <ol className="flex items-center space-x-2 text-sm">
+              {/* 홈 버튼 */}
               <li>
                 <Link
                   to="/"
@@ -119,13 +117,17 @@ const Breadcrumb = ({ customItems, className = '' }: BreadcrumbProps) => {
                 </Link>
               </li>
 
-              {breadcrumbItems.length > 2 && (
+              {/* 3뎁스 중간 경로 표시 */}
+              {breadcrumbItems.length > 3 && (
                 <>
                   <i className="ri-arrow-right-s-line text-gray-400 mx-1"></i>
-                  <li><span className="text-gray-400">...</span></li>
+                  <li>
+                    <span className="text-gray-400">...</span>
+                  </li>
                 </>
               )}
 
+              {/* 마지막 페이지 이름만 표시 */}
               {breadcrumbItems.length > 1 && (
                 <>
                   <i className="ri-arrow-right-s-line text-gray-400 mx-1"></i>

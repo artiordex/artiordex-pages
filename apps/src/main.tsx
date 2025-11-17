@@ -1,16 +1,17 @@
 /**
- * Description : ui-types.ts - 📌 ConnectWon UI 타입 정의
+ * Description : main.tsx - 📌 React 애플리케이션 진입점 및 Strict Mode 적용
  * Author : Shiwoo Min
- * Date : 2025-09-16
+ * Date : 2025-09-17
  */
 
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
+
 import '@/index.css';
-import App from '@/AppShell';
+import AppShell from '@/AppShell';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    <AppShell />
   </StrictMode>,
 );

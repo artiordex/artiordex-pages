@@ -1,0 +1,15 @@
+/**
+ * Description : index.css - 📌 Tailwind CSS 초기화 및 엔트리포인트
+ * Author : Shiwoo Min
+ * Date : 2025-11-17
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 글로벌 커스텀 스타일 */
+@import "./customs.css";
+
+/* 글로벌 애니메이션 */
+@import "./animations.css";

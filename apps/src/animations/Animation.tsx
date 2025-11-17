@@ -13,7 +13,7 @@ import type {
   ProgressBarProps,
   CircularProgressProps,
   TypingIndicatorProps
-} from '../ui-types.js';
+} from '@/types/animation.types';
 
 /**
  * PulseLoader
@@ -22,16 +22,25 @@ import type {
  * @param color - 점 색상
  * @param className - 추가 클래스명
  */
-export const PulseLoader: React.FC<PulseLoaderProps> = ({ count = 3, color, className = '' }) => {
+export const PulseLoader: React.FC<PulseLoaderProps> = ({
+  count = 3,
+  color,
+  className = ''
+}) => {
   const dots = Math.max(1, Math.min(3, count));
 
   return (
-    <div className={`flex gap-1 ${className}`} style={{ color }}>
+    <div
+      className={`flex gap-1 ${className}`}
+      style={{ '--color': color } as React.CSSProperties}
+      data-color
+    >
       {Array.from({ length: dots }).map((_, i) => (
         <div
           key={i}
           className="w-2 h-2 rounded-full bg-current animate-pulse"
-          style={{ animationDelay: `${i * 0.2}s` }}
+          style={{ '--delay': `${i * 0.2}s` } as React.CSSProperties}
+          data-delay
         />
       ))}
     </div>
@@ -41,10 +50,10 @@ export const PulseLoader: React.FC<PulseLoaderProps> = ({ count = 3, color, clas
 /**
  * SkeletonLoader
  * 콘텐츠 로딩 시 보여주는 스켈레톤 UI
- * @param variant - 모양(rectangular | circle)
+ * @param variant - 모양(rectangular | avatar)
  * @param lines - 여러 줄 표시 여부
- * @param width - 가로 길이
- * @param height - 세로 길이
+ * @param width - 가로 길이(px)
+ * @param height - 세로 길이(px)
  * @param className - 추가 클래스명
  */
 export const SkeletonLoader: React.FC<SkeletonLoaderProps> = ({
@@ -52,7 +61,7 @@ export const SkeletonLoader: React.FC<SkeletonLoaderProps> = ({
   lines = 1,
   width,
   height,
-  className = '',
+  className = ''
 }) => {
   const base = `bg-gray-200 animate-pulse ${
     variant === 'avatar' ? 'rounded-full' : 'rounded-md'
@@ -61,7 +70,13 @@ export const SkeletonLoader: React.FC<SkeletonLoaderProps> = ({
   return (
     <div className={`flex flex-col gap-2 ${className}`}>
       {Array.from({ length: lines }).map((_, i) => (
-        <div key={i} className={base} style={{ width, height }} />
+        <div
+          key={i}
+          className={base}
+          style={{ '--w': width, '--h': height } as React.CSSProperties}
+          data-w
+          data-h
+        />
       ))}
     </div>
   );
@@ -71,9 +86,9 @@ export const SkeletonLoader: React.FC<SkeletonLoaderProps> = ({
  * FloatingNotification
  * 화면 상단에 나타나는 일시적 알림 메시지
  * @param type - 알림 종류(success | error | info | warning)
- * @param duration - 자동 닫힘까지 걸리는 시간(ms)
+ * @param duration - 자동 닫힘 시간(ms)
  * @param autoClose - 자동 닫힘 여부
- * @param onClose - 닫힘 이벤트 콜백
+ * @param onClose - 닫힘 콜백
  * @param className - 추가 클래스명
  */
 export function FloatingNotification({
@@ -132,16 +147,19 @@ export const Fade: React.FC<FadeProps> = ({
   if (!trigger) return <>{children}</>;
 
   const dir = {
-    up: 'translate-y-3 opacity-0',
-    down: '-translate-y-3 opacity-0',
-    left: 'translate-x-3 opacity-0',
-    right: '-translate-x-3 opacity-0',
+    up: 'translateY(12px)',
+    down: 'translateY(-12px)',
+    left: 'translateX(12px)',
+    right: 'translateX(-12px)',
   }[direction];
 
   return (
     <div
-      className={`transition-all ease-out duration-${duration} ${className} animate-fade-in`}
-      style={{ '--tw-enter-from': dir } as React.CSSProperties}
+      className={`animate-fade-in ${className}`}
+      style={{
+        '--fade-from': dir,
+        '--duration': `${duration}ms`,
+      } as React.CSSProperties}
     >
       {children}
     </div>
@@ -150,12 +168,12 @@ export const Fade: React.FC<FadeProps> = ({
 
 /**
  * ProgressBar
- * 기본 직선 형태의 진행률 표시 바
+ * 기본 직선 형태의 진행 바
  * @param progress - 진행률(0~100)
  * @param color - 진행 색상
  * @param backgroundColor - 배경 색상
  * @param height - 높이(px)
- * @param showLabel - 퍼센트 텍스트 표시 여부
+ * @param showLabel - 퍼센트 표시 여부
  */
 export const ProgressBar: React.FC<ProgressBarProps> = ({
   progress = 0,
@@ -166,15 +184,18 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   className = '',
 }) => {
   return (
-    <div className={`rounded-full overflow-hidden ${className}`} style={{ backgroundColor, height }}>
+    <div
+      className={`rounded-full overflow-hidden ${className}`}
+      style={{ '--bg': backgroundColor, '--h': `${height}px` } as React.CSSProperties}
+      data-bg
+      data-h
+    >
       <div
-        className="transition-all ease-out"
-        style={{
-          width: `${progress}%`,
-          backgroundColor: color,
-          height: '100%',
-        }}
-      />
+        className="transition-all ease-out h-full"
+        style={{ '--progress': `${progress}%`, '--color': color } as React.CSSProperties}
+        data-progress
+        data-color
+      ></div>
       {showLabel && <span className="ml-2">{Math.round(progress)}%</span>}
     </div>
   );
@@ -184,8 +205,8 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
  * CircularProgress
  * 원형 형태의 진행률 표시 컴포넌트
  * @param progress - 진행률(0~100)
- * @param size - 요소 크기(px)
- * @param strokeWidth - 선 두께
+ * @param size - 크기(px)
+ * @param strokeWidth - 두께(px)
  * @param color - 진행 색상
  * @param backgroundColor - 배경 원 색상
  * @param showLabel - 퍼센트 표시 여부
@@ -203,16 +224,14 @@ export const CircularProgress: React.FC<CircularProgressProps> = ({
   const offset = total - (progress / 100) * total;
 
   return (
-    <div className="relative" style={{ width: size, height: size }}>
+    <div
+      className="relative flex items-center justify-center"
+      style={{ '--w': `${size}px`, '--h': `${size}px` } as React.CSSProperties}
+      data-w
+      data-h
+    >
       <svg width={size} height={size}>
-        <circle
-          cx={size / 2}
-          cy={size / 2}
-          r={radius}
-          stroke={backgroundColor}
-          strokeWidth={strokeWidth}
-          fill="transparent"
-        />
+        <circle cx={size / 2} cy={size / 2} r={radius} stroke={backgroundColor} strokeWidth={strokeWidth} fill="transparent" />
         <circle
           cx={size / 2}
           cy={size / 2}
@@ -226,8 +245,9 @@ export const CircularProgress: React.FC<CircularProgressProps> = ({
           className="transition-all"
         />
       </svg>
+
       {showLabel && (
-        <div className="absolute inset-0 flex items-center justify-center font-medium">
+        <div className="absolute flex items-center justify-center inset-0 font-medium">
           {Math.round(progress)}%
         </div>
       )}
@@ -237,8 +257,8 @@ export const CircularProgress: React.FC<CircularProgressProps> = ({
 
 /**
  * TypingIndicator
- * 채팅 메시지 입력 중을 나타내는 점(●●●) 애니메이션
- * @param dotCount - 점 개수(1~3)
+ * 채팅 입력 중 점 애니메이션(●●●)
+ * @param dotCount - 점 개수
  * @param dotColor - 점 색상
  * @param className - 추가 클래스명
  */
@@ -255,7 +275,9 @@ export const TypingIndicator: React.FC<TypingIndicatorProps> = ({
         <div
           key={i}
           className="w-2 h-2 rounded-full animate-bounce"
-          style={{ backgroundColor: dotColor, animationDelay: `${i * 0.15}s` }}
+          style={{ '--dot-color': dotColor, '--delay': `${i * 0.15}s` } as React.CSSProperties}
+          data-dot-color
+          data-delay
         />
       ))}
     </div>
@@ -264,15 +286,16 @@ export const TypingIndicator: React.FC<TypingIndicatorProps> = ({
 
 /**
  * useIntersectionAnimation
- * 스크롤 시 요소가 뷰포트에 들어올 때 애니메이션을 트리거하는 훅
- * @param options - IntersectionObserver 설정 옵션
- * @returns - ref(요소 연결용)와 가시 여부(Boolean)
+ * 스크롤 시 요소가 뷰포트에 들어오면 애니메이션 트리거
+ * @param options - IntersectionObserver 옵션
+ * @returns ref, isVisible
  */
 export const useIntersectionAnimation = (options: IntersectionObserverInit = {}) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const ref = useCallback((node: Element | null) => {
     if (!node) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -280,8 +303,9 @@ export const useIntersectionAnimation = (options: IntersectionObserverInit = {})
           observer.disconnect();
         }
       },
-      { threshold: 0.2, ...options },
+      { threshold: 0.2, ...options }
     );
+
     observer.observe(node);
   }, []);
 

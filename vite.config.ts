@@ -35,5 +35,5 @@ export default defineConfig({
   },
 
   // 배포용 기본 경로
-  base: './'
+  base: '/apps/'
 });

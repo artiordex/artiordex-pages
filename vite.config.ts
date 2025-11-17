@@ -9,28 +9,32 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 
 export default defineConfig({
-  plugins: [react()],
+  // 프로젝트 루트를 apps 폴더로 지정
+  root: 'apps',
 
-  // 기본 public 경로 설정 (배포 환경 CDN 대응 가능)
-  base: '/',
+  // 공용 정적 파일 위치
+  publicDir: 'apps/public',
 
-  // 절대 경로 alias
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, './src'),
-    },
-  },
-
-  // 개발 서버 설정
+  // 개발 서버
   server: {
     port: 5173,
     open: true,
   },
 
-  // 빌드 옵션
+  // 배포 빌드 설정
   build: {
-    outDir: 'dist',
-    sourcemap: false,
+    outDir: '../dist', // dist는 루트 기준 생성
     emptyOutDir: true,
+    sourcemap: false,
   },
+
+  // 절대 경로 alias
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './apps/src'),
+    },
+  },
+
+  // 배포용 기본 경로
+  base: '/', // GitHub Pages용이라면 './' 로 교체
 });

@@ -22,6 +22,32 @@
 
     <!-- Favicon (public/) -->
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+
+    <!-- Remix Icon (드롭다운 화살표 등 아이콘용) -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- Pretendard 폰트 (한글 폰트 최적화) -->
+    <link rel="stylesheet" as="style" crossorigin
+          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
+    <!-- Flag Icons CSS (국기 아이콘) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css"/>
+
+    <!-- 이모지 폰트 지원 (Windows에서 이모지 렌더링 개선) -->
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap');
+
+      body {
+        font-family: 'Pretendard', -apple-system, BlinkMacSystemFont,
+                      'Segoe UI', Roboto, 'Noto Color Emoji', sans-serif;
+      }
+
+      /* 이모지 렌더링 개선 */
+      .emoji {
+        font-family: 'Noto Color Emoji', 'Apple Color Emoji',
+                      'Segoe UI Emoji', 'Segoe UI Symbol';
+      }
+    </style>
   </head>
 
   <body>

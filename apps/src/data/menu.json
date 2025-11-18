@@ -145,6 +145,51 @@
       "id": "portfolio",
       "label": "포트폴리오",
       "path": "/portfolio",
+      "megaMenu": {
+        "columns": [
+          {
+            "id": "portfolio-categories",
+            "title": "프로젝트 카테고리",
+            "links": [
+              { "label": "전체 포트폴리오", "to": "/portfolio" },
+              { "label": "AI & 머신러닝 프로젝트", "to": "/portfolio/ai" },
+              { "label": "DX 전환 사례", "to": "/portfolio/dx" },
+              { "label": "데이터 통합 & ETL", "to": "/portfolio/data" },
+              { "label": "RPA 자동화", "to": "/portfolio/rpa" }
+            ]
+          },
+          {
+            "id": "portfolio-industry",
+            "title": "산업별 사례",
+            "links": [
+              { "label": "제조업", "to": "/portfolio/industry/manufacturing" },
+              { "label": "금융 & 보험", "to": "/portfolio/industry/finance" },
+              { "label": "유통 & 리테일", "to": "/portfolio/industry/retail" },
+              { "label": "헬스케어", "to": "/portfolio/industry/healthcare" },
+              { "label": "공공기관", "to": "/portfolio/industry/public" }
+            ]
+          },
+          {
+            "id": "portfolio-products",
+            "title": "제품별 구축사례",
+            "links": [
+              { "label": "Artiflow 구축 사례", "to": "/portfolio/product/artiflow" },
+              { "label": "SmartHub 구축 사례", "to": "/portfolio/product/smarthub" },
+              { "label": "Power Platform 구축", "to": "/portfolio/product/power-platform" },
+              { "label": "맞춤형 개발 사례", "to": "/portfolio/product/custom" }
+            ]
+          },
+          {
+            "id": "portfolio-success",
+            "title": "성공 지표",
+            "links": [
+              { "label": "고객 성공 스토리", "to": "/portfolio/success-stories" },
+              { "label": "ROI 분석 사례", "to": "/portfolio/roi-analysis" },
+              { "label": "고객 평가 & 리뷰", "to": "/portfolio/testimonials" }
+            ]
+          }
+        ]
+      },
       "mobileMenu": {
         "sections": [
           {
@@ -164,6 +209,53 @@
       "id": "resources",
       "label": "리소스",
       "path": "/resources",
+      "megaMenu": {
+        "columns": [
+          {
+            "id": "resources-content",
+            "title": "콘텐츠 & 자료",
+            "links": [
+              { "label": "기술 블로그", "to": "/resources/blog" },
+              { "label": "백서 & 연구자료", "to": "/resources/whitepapers" },
+              { "label": "사례 연구", "to": "/resources/case-studies" },
+              { "label": "기술 문서", "to": "/resources/documentation" },
+              { "label": "뉴스레터", "to": "/resources/newsletter" }
+            ]
+          },
+          {
+            "id": "resources-learning",
+            "title": "학습 & 교육",
+            "links": [
+              { "label": "웨비나 & 세미나", "to": "/resources/webinars" },
+              { "label": "튜토리얼 & 가이드", "to": "/resources/tutorials" },
+              { "label": "교육 프로그램", "to": "/resources/training" },
+              { "label": "인증 과정", "to": "/resources/certification" },
+              { "label": "FAQ", "to": "/resources/faq" }
+            ]
+          },
+          {
+            "id": "resources-tools",
+            "title": "도구 & 템플릿",
+            "links": [
+              { "label": "다운로드 센터", "to": "/resources/downloads" },
+              { "label": "무료 도구", "to": "/resources/tools" },
+              { "label": "템플릿 라이브러리", "to": "/resources/templates" },
+              { "label": "API 문서", "to": "/resources/api-docs" },
+              { "label": "SDK & 플러그인", "to": "/resources/sdk" }
+            ]
+          },
+          {
+            "id": "resources-community",
+            "title": "커뮤니티",
+            "links": [
+              { "label": "개발자 포럼", "to": "/resources/forum" },
+              { "label": "사용자 그룹", "to": "/resources/user-groups" },
+              { "label": "이벤트 & 컨퍼런스", "to": "/resources/events" },
+              { "label": "파트너 네트워크", "to": "/resources/partners" }
+            ]
+          }
+        ]
+      },
       "mobileMenu": {
         "sections": [
           {
@@ -182,6 +274,81 @@
       "id": "contact",
       "label": "문의하기",
       "path": "/contact",
+      "megaMenu": {
+        "columns": [
+          {
+            "id": "contact-projects",
+            "title": "프로젝트 문의",
+            "links": [
+              { "label": "AI 프로젝트 견적", "to": "/contact/projects/ai-estimate" },
+              { "label": "DX 컨설팅 요청", "to": "/contact/projects/dx-consulting" },
+              { "label": "Power Platform 구축", "to": "/contact/projects/power-platform" },
+              { "label": "맞춤 개발 상담", "to": "/contact/projects/custom-development" },
+              { "label": "POC 요청", "to": "/contact/projects/poc" }
+            ]
+          },
+          {
+            "id": "contact-support",
+            "title": "기술 지원",
+            "links": [
+              { "label": "기술 지원 요청", "to": "/contact/support" },
+              { "label": "유지보수 문의", "to": "/contact/support/maintenance" },
+              { "label": "버그 리포트", "to": "/contact/support/bug-report" },
+              { "label": "긴급 지원", "to": "/contact/support/emergency" },
+              { "label": "원격 지원 예약", "to": "/contact/support/remote" }
+            ]
+          },
+          {
+            "id": "contact-business",
+            "title": "비즈니스 문의",
+            "links": [
+              { "label": "일반 문의", "to": "/contact" },
+              { "label": "파트너십 제안", "to": "/contact/partners/proposal" },
+              { "label": "리셀러 신청", "to": "/contact/partners/reseller" },
+              { "label": "투자 문의", "to": "/contact/business/investment" },
+              { "label": "미디어 문의", "to": "/contact/business/media" }
+            ]
+          },
+          {
+            "id": "contact-info",
+            "title": "연락처 정보",
+            "links": [
+              { "label": "본사 위치", "to": "/contact/location" },
+              { "label": "영업 시간", "to": "/contact/hours" },
+              { "label": "연락처 정보", "to": "/contact/info" },
+              { "label": "온라인 상담 예약", "to": "/contact/booking" }
+            ]
+          }
+        ],
+
+        "footer": {
+          "contacts": [
+            {
+              "type": "email",
+              "icon": "ri-mail-line",
+              "label": "contact@artiordex.com",
+              "href": "mailto:contact@artiordex.com"
+            },
+            {
+              "type": "phone",
+              "icon": "ri-phone-line",
+              "label": "010-2589-3152",
+              "href": "tel:010-2589-3152"
+            }
+          ],
+          "actions": [
+            {
+              "label": "견적 요청",
+              "to": "/contact"
+            },
+            {
+              "label": "상담 예약",
+              "to": "/contact/booking"
+            }
+          ]
+        }
+      },
+
       "mobileMenu": {
         "sections": [
           {

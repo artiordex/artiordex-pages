@@ -1,0 +1,15 @@
+{
+  "name": "Artiordex",
+  "slogan": "Digital Transformation Partner",
+  "logo": "/images/logo/Artiordex_logo.png",
+  "description": "기술로 연결하고, 혁신으로 성장한다",
+
+  "company": {
+    "ceo": "Shiwoo Min",
+    "ceo_kor": "민시우",
+    "expertise": "Full-Stack Development, DevOps Engineering",
+    "location": "광명시, 대한민국",
+    "business_number": "010-2589-3152",
+    "business_email": "artiordex@gmail.com"
+  }
+}

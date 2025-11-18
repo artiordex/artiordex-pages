@@ -64,6 +64,34 @@ export interface ContainerProps
 }
 
 /**
+ * FooterProps
+ */
+export interface FooterWithLinkProps extends FooterProps {
+  LinkComponent?: React.ComponentType<{
+    href: string;
+    children: React.ReactNode;
+    className?: string;
+    external?: boolean;
+  }>;
+}
+
+export interface FooterCompanyInfo {
+  ceo?: string;
+  ceo_kor?: string;
+  expertise?: string;
+  business_number?: string;
+  business_email?: string;
+  location?: string;
+}
+
+export interface FooterBrand {
+  name?: string;
+  logo?: ReactNode;
+  description?: string;
+  company?: FooterCompanyInfo;
+}
+
+/**
  * Footer 브랜드 정보
  */
 export interface FooterBrand {

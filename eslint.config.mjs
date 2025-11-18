@@ -7,11 +7,11 @@
 import eslint from '@eslint/js';
 import tseslint from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
-import react from 'eslint-plugin-react';
-import reactHooks from 'eslint-plugin-react-hooks';
+import prettier from 'eslint-config-prettier';
 import importPlugin from 'eslint-plugin-import';
 import a11y from 'eslint-plugin-jsx-a11y';
-import prettier from 'eslint-config-prettier';
+import react from 'eslint-plugin-react';
+import reactHooks from 'eslint-plugin-react-hooks';
 
 export default [
   eslint.configs.recommended,
@@ -72,6 +72,7 @@ export default [
 
       /* React 규칙 */
       'react/react-in-jsx-scope': 'off',
+      "react/button-has-type": "off",
       'react/prop-types': 'off',
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'warn',

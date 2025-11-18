@@ -9,6 +9,7 @@ import { createRoot } from 'react-dom/client';
 
 import App from '@/App';
 import '@/styles/index.css';
+import 'flag-icons/css/flag-icons.min.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

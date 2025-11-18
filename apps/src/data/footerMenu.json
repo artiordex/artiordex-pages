@@ -1,0 +1,44 @@
+{
+  "columns": [
+    {
+      "title": "회사소개",
+      "links": [
+        { "label": "비전 & 미션", "href": "/about/vision-mission" },
+        { "label": "CEO 인사말", "href": "/about/ceo-message" },
+        { "label": "회사 연혁", "href": "/about/history" },
+        { "label": "조직도", "href": "/about/organization" }
+      ]
+    },
+    {
+      "title": "솔루션",
+      "links": [
+        { "label": "Artiflow", "href": "/solutions/artiflow" },
+        { "label": "SmartHub", "href": "/solutions/smarthub" },
+        { "label": "ConnectStack", "href": "/solutions/connectstack" },
+        { "label": "AI & 자동화", "href": "/solutions/ai-automation" }
+      ]
+    },
+    {
+      "title": "리소스",
+      "links": [
+        { "label": "기술 블로그", "href": "/resources/blog" },
+        { "label": "백서 & 자료실", "href": "/resources/whitepapers" },
+        { "label": "세미나 & 웨비나", "href": "/resources/webinars" },
+        { "label": "FAQ", "href": "/resources/faq" }
+      ]
+    },
+    {
+      "title": "지원 & 문의",
+      "links": [
+        { "label": "일반 문의", "href": "/contact" },
+        { "label": "기술 지원", "href": "/contact/support" },
+        { "label": "상담 예약", "href": "/contact/booking" },
+        { "label": "파트너 제휴", "href": "/contact/partners/proposal" }
+      ]
+    }
+  ],
+  "legal": [
+    { "label": "이용약관", "href": "/terms" },
+    { "label": "개인정보 처리방침", "href": "/privacy" }
+  ]
+}

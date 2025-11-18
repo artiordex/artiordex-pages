@@ -7,6 +7,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "flag-icons/css/flag-icons.min.css";
 
 /* 글로벌 커스텀 스타일 */
 @import "./customs.css";

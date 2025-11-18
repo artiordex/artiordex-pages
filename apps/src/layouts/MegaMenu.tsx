@@ -1,5 +1,5 @@
 /**
- * Description : MegaMenuLayout.tsx - 📌 메가메뉴 레이아웃 전용 컴포넌트
+ * Description : MegaMenu.tsx - 📌 메가메뉴 레이아웃 전용 컴포넌트
  * Author : Shiwoo Min
  * Date : 2025-11-18
  */
@@ -8,15 +8,17 @@ import type { MegaMenuConfig } from "@/configs/header.config";
 import { Link } from "react-router-dom";
 
 interface MegaMenuLayoutProps {
-  menu: MegaMenuConfig; // JSON 기반 columns[] 구조
+  menu: MegaMenuConfig;
+  menuId?: string; // 필요하면 메뉴 ID 참고 가능
 }
 
 export default function MegaMenuLayout({ menu }: MegaMenuLayoutProps) {
   return (
-    <div className="bg-white shadow-lg border-b border-gray-100 relative z-40">
-      <div className="max-w-7xl mx-auto px-6 py-6">
-        <div className="grid grid-cols-4 gap-10">
+    <div className="w-full bg-white shadow-lg border-b border-gray-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-6">
 
+        {/* ▣ 상단 컬럼들 */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-10">
           {menu.columns.map((column) => (
             <div key={column.id} className="space-y-3">
 
@@ -73,10 +75,52 @@ export default function MegaMenuLayout({ menu }: MegaMenuLayoutProps) {
                   ))}
                 </div>
               )}
+
             </div>
           ))}
-
         </div>
+
+        {/* 하단 Footer */}
+        {menu.footer && (
+          <div className="mt-6 pt-6 border-t border-gray-200">
+            <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+
+              {/* 연락처 */}
+              <div className="flex items-center gap-6 text-sm text-gray-600">
+                {menu.footer.contacts.map((contact, idx) => (
+                  <a
+                    key={idx}
+                    href={contact.href}
+                    className="flex items-center gap-2 hover:text-blue-600 transition-colors"
+                  >
+                    <i className={`${contact.icon} text-base`}></i>
+                    <span>{contact.label}</span>
+                  </a>
+                ))}
+              </div>
+
+              {/* CTA 버튼 */}
+              <div className="flex gap-3">
+                {menu.footer.actions.map((action, idx) => (
+                  <Link
+                    key={idx}
+                    to={action.to}
+                    className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors
+                      ${idx === 0
+                        ? "bg-blue-600 text-white hover:bg-blue-700"
+                        : "border border-gray-300 text-gray-700 hover:bg-gray-50"
+                      }
+                    `}
+                  >
+                    {action.label}
+                  </Link>
+                ))}
+              </div>
+
+            </div>
+          </div>
+        )}
+
       </div>
     </div>
   );

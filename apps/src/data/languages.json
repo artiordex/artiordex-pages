@@ -1,42 +1,52 @@
 [
   {
     "code": "KOR",
-    "name": "한국어"
+    "name": "한국어",
+    "flag": "kr"
   },
   {
     "code": "ENG",
-    "name": "English"
+    "name": "English",
+    "flag": "us"
   },
   {
     "code": "JPN",
-    "name": "日本語"
+    "name": "日本語",
+    "flag": "jp"
   },
   {
     "code": "CHN",
-    "name": "中文"
+    "name": "中文",
+    "flag": "cn"
   },
   {
     "code": "ESP",
-    "name": "Español"
+    "name": "Español",
+    "flag": "es"
   },
   {
     "code": "FRA",
-    "name": "Français"
+    "name": "Français",
+    "flag": "fr"
   },
   {
     "code": "DEU",
-    "name": "Deutsch"
+    "name": "Deutsch",
+    "flag": "de"
   },
   {
     "code": "ITA",
-    "name": "Italiano"
+    "name": "Italiano",
+    "flag": "it"
   },
   {
     "code": "RUS",
-    "name": "Русский"
+    "name": "Русский",
+    "flag": "ru"
   },
   {
     "code": "ARA",
-    "name": "العربية"
+    "name": "العربية",
+    "flag": "sa"
   }
 ]

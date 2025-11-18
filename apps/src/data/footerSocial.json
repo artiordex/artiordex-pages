@@ -1,0 +1,40 @@
+{
+  "social": [
+    {
+      "label": "LinkedIn",
+      "href": "https://linkedin.com/company/artiordex",
+      "icon": "ri-linkedin-fill",
+      "external": true
+    },
+    {
+      "label": "GitHub",
+      "href": "https://github.com/artiordex",
+      "icon": "ri-github-fill",
+      "external": true
+    },
+    {
+      "label": "YouTube",
+      "href": "https://youtube.com/@artiordex",
+      "icon": "ri-youtube-fill",
+      "external": true
+    },
+    {
+      "label": "Instagram",
+      "href": "https://instagram.com/artiordex",
+      "icon": "ri-instagram-line",
+      "external": true
+    },
+    {
+      "label": "Company Notion",
+      "href": "https://www.notion.so/artiordex",
+      "icon": "ri-notion-fill",
+      "external": true
+    },
+    {
+      "label": "Naver Blog",
+      "href": "https://blog.naver.com/artiordex",
+      "icon": "ri-edit-box-line",
+      "external": true
+    }
+  ]
+}
